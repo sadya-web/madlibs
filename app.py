@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-# List of 100 parts of speech or types of words
+# 100 detailed, varied, and fun word prompts
 word_types = [
     "adjective", "noun", "verb ending in -ing", "place", "animal", "color", "plural noun", "funny word",
     "past-tense verb", "type of weather", "body part", "adjective", "noun", "verb", "emotion", "number",
@@ -25,19 +25,33 @@ def madlibs():
     if request.method == "POST":
         words = [request.form.get(f'word{i}') for i in range(100)]
 
-        # Build the funny, spring-themed story
+        # Use ALL 100 words in the story
         story = f"""
-        On a {words[0]} spring morning in {words[3]}, a {words[4]} wearing {words[27]} {words[5]} shoes was {words[2]} across a field of {words[65]}s.
-        Suddenly, it shouted, "{words[7]}!" and threw a {words[12]} at a group of {words[6]} {words[1]}s.
-        The sky turned {words[5]}, and it began to rain {words[6]} made of {words[21]}.
-        I grabbed my {words[17]} and ran inside the {words[33]}, tripping over a {words[30]} on my way.
-        Inside, my {words[70]} was dancing to {words[39]}, while a {words[59]} {words[4]} made {words[28]} using a {words[37]}.
-        We {words[13]}ed and laughed until {words[15]} {words[3]} unicorns flew by wearing {words[47]} suits, throwing {words[55]} at each other.
-        "{words[79]}!" I yelled, spilling my {words[85]} all over the {words[92]}.
-        It was chaos — the {words[60]} screamed, the {words[82]} broke, and even the {words[29]} looked shocked.
-        Just when things couldn’t get weirder, a {words[61]} floated in on a cloud of {words[90]} and gave everyone a hug.
-        We ended the day by planting {words[64]}s in the {words[66]}, singing {words[40]}, and promising to never {words[74]} on a {words[99]} spring day again.
-        The end.
+        On a {words[0]} spring day, a {words[4]} wearing a {words[5]} {words[27]} was {words[2]} in the {words[3]}.
+        Suddenly, a bunch of {words[6]} shouted "{words[7]}!" as they {words[8]} through the {words[9]} sky.
+        I blinked my {words[10]} and saw a {words[11]} {words[12]} hopping toward me holding a {words[13]} balloon.
+        Feeling {words[14]}, I grabbed {words[17]} and ran {words[19]} past {words[15]} {words[20]}s.
+        A cup of {words[21]} spilled on my {words[28]}, and I bumped into {words[22]}, who was on vacation from {words[23]}.
+        We sat under a {words[34]} and shared {words[24]}s and {words[25]}s while a {words[26]} floated by.
+        My {words[29]} waved from a nearby bush, dressed like a {words[30]} with a {words[31]} {words[32]} hat.
+        Suddenly, a {words[33]} scream rang out from the {words[35]}, where someone was fixing a {words[36]} with a {words[37]}.
+        We hopped on a {words[38]} and played {words[39]} while singing {words[40]} from the movie {words[41]}.
+        Later, we googled it on {words[42]} and ate {words[43]} while cleaning with {words[44]}.
+        I ran through the {words[45]} with my {words[46]} cape, stepped on {words[47]} {words[48]}, and did the {words[49]}.
+        I felt {words[50]}, so I yelled "{words[51]}!" and rode a {words[52]} while making a {words[53]} noise.
+        I offered {words[54]} wrapped in {words[55]} to {words[56]} who sat on a {words[57]} reading about a {words[58]}.
+        I {words[59]} and {words[60]} while playing {words[61]} using a {words[62]} from the {words[63]}.
+        In the {words[64]}, I wore {words[65]}s and walked {words[66]} while studying {words[67]}.
+        Everything felt so {words[68]}, especially with the {words[69]} music playing near the {words[70]} booth.
+        My friend {words[71]} called out, "Look! {words[72]} is arm-wrestling {words[73]}!"
+        We all {words[74]} and tossed {words[75]}s as a {words[76]}-tall {words[77]} spilled {words[78]}.
+        I dropped my {words[79]} and screamed, "{words[80]}!" while dodging a flying {words[81]}.
+        A crowd formed shouting scientific words like {words[82]} and shopping at {words[83]}.
+        I fixed it with my {words[84]}, drank {words[85]}, and felt super {words[86]}.
+        I {words[87]} toward a giant {words[88]} as the {words[89]} ended and {words[90]}s flew over the {words[91]}.
+        I gave my {words[92]} a hug and munched on a {words[93]}, dancing for a whole {words[94]}.
+        We ended with a game of {words[95]} under a {words[96]}, counting to {words[97]}, smiling at the {words[98]} sky.
+        What a {words[99]} spring day!
         """
 
         return render_template("result.html", story=story)
