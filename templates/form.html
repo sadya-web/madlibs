@@ -4,9 +4,9 @@
     <title>100-Word Mega Mad Libs</title>
 </head>
 <body>
-    <h1>😂 Fill in 100 Words for the Craziest Story Ever</h1>
+    <h1>😂 Fill in 20 Words for the Craziest Spring Story Ever</h1>
     <form method="post">
-        {% for i in range(100) %}
+        {% for i in range(20) %}
             <label>{{ i+1 }}. {{ word_types[i] }}:</label><br>
             <input type="text" name="word{{ i }}" required><br><br>
         {% endfor %}
