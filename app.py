@@ -2,59 +2,47 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-# List of 100 word prompts
+# List of 100 parts of speech or types of words
 word_types = [
-    "noun", "adjective", "verb", "place", "silly word", "animal", "food", "emotion", "color", "body part",
-    "verb ending in -ing", "plural noun", "number", "celebrity", "object", "sound", "adjective", "vehicle",
-    "fruit", "vegetable", "occupation", "past-tense verb", "drink", "planet", "famous person", "exclamation",
-    "type of weather", "clothing item", "adverb", "shape", "country", "liquid", "tool", "sport", "game",
-    "school subject", "type of music", "relative", "type of candy", "part of a house", "insect",
-    "furniture", "website", "language", "dessert", "toy", "movie title", "book title", "store name",
-    "type of shoe", "song title", "holiday", "city", "mythical creature", "smell", "sound effect", "emotion",
-    "spice", "measurement", "body part (plural)", "nickname", "fabric", "color", "cleaning product", "magical object",
-    "name", "disease", "slang word", "brand name", "magazine title", "cereal name", "board game", "tree type",
-    "junk food", "month", "day of the week", "building type", "type of dance", "flower", "precious stone", "gem",
-    "type of cheese", "internet slang", "loud noise", "awkward phrase", "flavor", "season", "sea creature", "bird",
-    "famous landmark", "type of bug", "funny phrase", "emotion", "hairstyle", "kitchen item", "emoji name",
-    "superhero name", "video game", "dog breed", "cat breed", "body function", "bad habit", "magic spell"
+    "adjective", "noun", "verb ending in -ing", "place", "animal", "color", "plural noun", "funny word",
+    "past-tense verb", "type of weather", "body part", "adjective", "noun", "verb", "emotion", "number",
+    "silly sound", "object", "verb ending in -ed", "adverb", "insect", "liquid", "celebrity", "holiday",
+    "fruit", "vegetable", "toy", "clothing item", "dessert", "plant", "magical creature", "adjective",
+    "shape", "building", "type of tree", "adjective", "tool", "mode of transportation", "game", "book title",
+    "song title", "movie title", "website", "junk food", "cleaning product", "part of a house", "fabric",
+    "number", "adjective", "plural body part", "material", "type of dance", "emotion", "slang word",
+    "brand name", "animal sound", "type of candy", "fabric pattern", "nickname", "furniture", "mythical creature",
+    "verb", "past-tense verb", "sport", "magical object", "room in a house", "type of flower", "type of shoe",
+    "direction", "school subject", "adjective", "type of music", "job", "name", "celebrity", "historical figure",
+    "verb", "plural noun", "measurement", "device", "liquid", "object", "exclamation", "invention",
+    "scientific term", "store name", "tool", "beverage", "emotion", "verb", "animal", "season",
+    "plural profession", "type of chair", "precious stone", "body part", "vegetable", "unit of time",
+    "game", "part of a tree", "number", "adjective"
 ]
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route("/", methods=["GET", "POST"])
 def madlibs():
-    if request.method == 'POST':
+    if request.method == "POST":
         words = [request.form.get(f'word{i}') for i in range(100)]
 
-        # Insert the words into your chaotic story template
+        # Build the funny, spring-themed story
         story = f"""
-        It was a {words[1]} day in {words[3]}. Suddenly, a {words[0]} exploded next to a {words[4]} {words[5]}.
-        Everyone started {words[10]} while eating {words[6]} and yelling, "{words[25]}!"
-        {words[13]} arrived riding a {words[17]} full of {words[11]}.
-
-        "This is more dramatic than {words[47]} meets {words[48]} at {words[49]}!" someone screamed.
-
-        A {words[27]} storm blew in, covering everyone in {words[31]} and soggy {words[13]} shirts.
-        "Quick!" yelled {words[12]} monkeys. "We must {words[2]} to the {words[73]} while wearing {words[26]} hats!"
-
-        Then {words[70]} squirrels began {words[10]} around a glowing {words[63]} chanting, "{words[4]}! {words[4]}!"
-
-        Meanwhile, {words[95]} cast {words[99]} on a {words[80]} filled with {words[83]} and {words[90]}. Chaos.
-
-        Suddenly, {words[59]} burst from the sky wearing {words[65]} pants and holding {words[60]} {words[32]}s.
-
-        A nearby {words[85]} began quoting {words[47]} backwards, then threw {words[84]} into the {words[29]} and yelled, "{words[89].upper()}!"
-
-        Then, silence.
-
-        Everyone stared at the {words[16]} {words[13]} who simply said, "{words[98]}."
-
-        It was the {words[75]} of all {words[74]}s.
-
-        THE END.
+        On a {words[0]} spring morning in {words[3]}, a {words[4]} wearing {words[27]} {words[5]} shoes was {words[2]} across a field of {words[65]}s.
+        Suddenly, it shouted, "{words[7]}!" and threw a {words[12]} at a group of {words[6]} {words[1]}s.
+        The sky turned {words[5]}, and it began to rain {words[6]} made of {words[21]}.
+        I grabbed my {words[17]} and ran inside the {words[33]}, tripping over a {words[30]} on my way.
+        Inside, my {words[70]} was dancing to {words[39]}, while a {words[59]} {words[4]} made {words[28]} using a {words[37]}.
+        We {words[13]}ed and laughed until {words[15]} {words[3]} unicorns flew by wearing {words[47]} suits, throwing {words[55]} at each other.
+        "{words[79]}!" I yelled, spilling my {words[85]} all over the {words[92]}.
+        It was chaos — the {words[60]} screamed, the {words[82]} broke, and even the {words[29]} looked shocked.
+        Just when things couldn’t get weirder, a {words[61]} floated in on a cloud of {words[90]} and gave everyone a hug.
+        We ended the day by planting {words[64]}s in the {words[66]}, singing {words[40]}, and promising to never {words[74]} on a {words[99]} spring day again.
+        The end.
         """
-        return render_template('result.html', story=story)
 
-    return render_template('form.html', word_types=word_types)
+        return render_template("result.html", story=story)
+
+    return render_template("form.html", word_types=word_types)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=80)
-
+    app.run(debug=True)
