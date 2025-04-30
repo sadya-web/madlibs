@@ -6,7 +6,7 @@ app = Flask(__name__)
 word_types = [
     "silly name", "adjective", "funny animal", "verb ending in -ing", "body part", 
     "gross food", "sound effect", "weird object", "place", "clothing item", 
-    "emotion", "color", "plural noun", "celebrity", "smelly thing", 
+    "emotion", "color", "plural noun", "famous person", "smelly thing", 
     "something sticky", "yummy food", "number", "ridiculous word", "big object"
 ]
 
